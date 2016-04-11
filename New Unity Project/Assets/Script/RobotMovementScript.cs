@@ -8,10 +8,13 @@ public class RobotMovementScript : MonoBehaviour {
 
     public Rigidbody m_rigidBody;
 
+    public GameObject Robot;
+    private Animator animate;
+
 	// Use this for initialization
 	void Start ()
     {
-
+        animate = Robot.GetComponent<Animator>();
 	}
 	
     void FixedUpdate()
@@ -24,6 +27,7 @@ public class RobotMovementScript : MonoBehaviour {
             (this.gameObject.name == "Robot2" && Input.GetKey(KeyCode.RightArrow)))
         {
             m_rigidBody.velocity = new Vector3(m_maxSpeed, m_rigidBody.velocity.y, 0);
+            animate.Play("Kick_Aniim");
         }
         if ((this.gameObject.name == "Robot1" && Input.GetKey(KeyCode.A)) ||
             (this.gameObject.name == "Robot2" && Input.GetKey(KeyCode.LeftArrow)))
